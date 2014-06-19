@@ -4,9 +4,18 @@ var SongQueue = Songs.extend({
 
   initialize: function(){
     this.on('add', function(song){
-      this.playFirst();
+      if (this.length === 1) {
+        this.playFirst();
+      }
     }, this);
 
+    this.on('ended', function (song) {
+      console.log('heard ended too');
+      this.shift();
+      if (this.length) {
+        this.playFirst();
+      }
+    });
 
   },
   playFirst: function(){
