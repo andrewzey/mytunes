@@ -9,8 +9,14 @@ var SongQueue = Songs.extend({
       }
     }, this);
 
+    this.on('dequeue', function(song){
+      if (this.length === 1) {
+        this.remove(song);
+      }
+    }, this);
+
     this.on('ended', function (song) {
-      console.log('heard ended too');
+      //console.log('SongQueue instance heard "ended" event of SongModel instance');
       this.shift();
       if (this.length) {
         this.playFirst();
@@ -18,8 +24,9 @@ var SongQueue = Songs.extend({
     });
 
   },
+
   playFirst: function(){
     this.at(0).play();
-  }
+  },
 
 });
