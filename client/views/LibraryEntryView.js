@@ -10,6 +10,7 @@ var LibraryEntryView = Backbone.View.extend({
       //if nothing is playing, then trigger the play method on the current song
         this.model.play();
       //else (something is already playing), add that song to the queue (call the song's "enqueue" method)
+        this.model.enqueue();
     }
   },
 
