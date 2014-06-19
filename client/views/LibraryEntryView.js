@@ -6,16 +6,10 @@ var LibraryEntryView = Backbone.View.extend({
   template: _.template('<td>(<%= artist %>)</td><td><%= title %></td>'),
 
   events: {
-    'click': function() { debugger
-      this.model.play();
-      //this.model.enqueue();
-      // if (!this.model.get('currentSong')) {
-
-      //   console.log('Played')
-      // } else {
-
-      //   console.log('Queued');
-      // }
+    'click': function() {
+      //if nothing is playing, then trigger the play method on the current song
+        this.model.play();
+      //else (something is already playing), add that song to the queue (call the song's "enqueue" method)
     }
   },
 
